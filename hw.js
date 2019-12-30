@@ -9,8 +9,16 @@
 // Hint: look up Array.prototype.map on MDN and see what arguments the .map callback can take.
 // ex: swapCase('hello stranger , what do we have today? ') // => " HELLO stranger , WHAT do WE have TODAY ?"
 var swapCase = function(string) {
-  // Codeeeee
+
+    const caps = string.split(' ').map(function(str,i){
+        return i%2 === 0? str.toUpperCase(): str.toLowerCase()
+    }).join(' ');
+
+    return caps;
+  //i've tried to use this expression to ignore a cpecific char(/[^, ]/g), but i couldn't figure it out
 };
+
+console.log(swapCase('hello stranger , what do we have today? '));
 ​
 // B) Write a function shiftLetters that takes a string and uses .map to return an encoded string with each letter shifted down the
 // alphabet by one. Hint: Use Look up the JS functions String.fromCharCode() and String.charCodeAt() .
@@ -18,9 +26,18 @@ var swapCase = function(string) {
 // ex. shiftLetters('hello') // => 'ifmmp'
 // ex. (shiftLetters('abcxyz') // => "bcdyz{"
 var shiftLetters = function(string) {
-  // code!
+
+  var result = string.split('').map(function(val) {
+    let letterKey = val.charCodeAt() + 1;
+    //if(letterKey > 122){
+       // letterKey = ''
+    //}
+    console.log(String.fromCharCode(letterKey));
+     //console.log(String.fromCharCode(letterKey)).join('');
+  });
 };
 
+shiftLetters('hello')
 
 
 
@@ -47,6 +64,18 @@ var shiftLetters = function(string) {
 // - 2 of diamonds
 // - 3 of diamonds 
 
+var cards = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+var suits = ["Diamonds", "Hearts", "Clubs", "Spades"];
+var deck = [];
+
+suits.forEach(function(s){
+  cards.forEach(function(c){
+    deck.push(`${c} of ${s}`);
+  });
+});
+console.log(deck);
+
+
 
 // B) Word Play
 // Create a form where users may enter a sentence.
@@ -54,6 +83,10 @@ var shiftLetters = function(string) {
 // Then, loop through this array to build a new array out of every word in the sentence that is 3 or more characters in length.
 // Finally, reverse the order of the new array, join it back together into a string, and display it to the user.
 
-
+//var wordPlay = function(str){
+  let wordPlay = str => str.split(' ').filter(f => f.length >= 3).reverse().join(' ');
+  //};
+  console.log(wordPlay('hi welcome to my page'));
+  
 
 
